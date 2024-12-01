@@ -191,16 +191,58 @@ def update_wraplength(event):
 def win_size():
     window.bind("<Configure>", update_wraplength)
 
+# ========== 添加菜单栏 ========== #
+def add_menu():
+    global menu_bar
+    menu_bar = tk.Menu(window)# 创建菜单栏
+
+    # 添加菜单选项
+    menu_file()
+    menu_use()
+    menu_help()
+
+    # 将菜单栏添加到主窗口
+    window.config(menu=menu_bar)
+
+# ========== "文件"菜单 ========== #
+def menu_file():
+    file_menu = tk.Menu(menu_bar, tearoff=0)
+    file_menu.add_command(label="退出", command=quit_app)
+    menu_bar.add_cascade(label="文件", menu=file_menu)
+
+# ========== "使用"菜单 ========== #
+def menu_use():
+    use_menu = tk.Menu(menu_bar, tearoff=0)
+    use_menu.add_command(label="添加话语", command=add_quote)
+    menu_bar.add_cascade(label="功能", menu=use_menu)
+
+# ========== "帮助"菜单 ========== #
+def menu_help():
+    help_menu = tk.Menu(menu_bar, tearoff=0)
+    help_menu.add_command(label="关于", command=show_about)
+    menu_bar.add_cascade(label="帮助", menu=help_menu)
+
+# ========== 关于信息窗口 ========== #
+def show_about():
+    messagebox.showinfo("关于", "励志话语\n版本: 1.0\n作者: 孙浩男")
+
 # ========== 窗口底部标签 ========== #
 def Button_window():
     button_frame = tk.Frame(window)
-    button_frame.pack(side=tk.BOTTOM, pady=10)
-    tk.Button(button_frame, text="随机话语", command=update_quote_only, font=("Microsoft YaHei", 12)).pack(side=tk.LEFT,padx=10)
-    tk.Button(button_frame, text="添加话语", command=add_quote, font=("Microsoft YaHei", 12)).pack(side=tk.LEFT,padx=10)
+    button_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+    random_button = tk.Button(
+        button_frame, 
+        text="随机话语", 
+        command=update_quote_only, 
+        font=("Microsoft YaHei", 12),
+        bg="white" 
+    )
+    random_button.pack(fill=tk.X, padx=20)
 
 if __name__ == "__main__":
     load_quotes()
     main_window()
+    add_menu()
     label_win()
     win_size()
     Button_window()

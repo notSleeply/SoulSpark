@@ -4,7 +4,7 @@
 
 ### 测试
 
-1. 运行DayDayUp.pyw即可
+- 运行DayDayUp.pyw即可
 
 ### 目标
 
