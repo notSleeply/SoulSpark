@@ -179,7 +179,7 @@ def main_window():
     window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")  # 设置窗口大小
     window.minsize(MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT)  # 设置最小尺寸
     window.resizable(True, True)  # 窗口大小可调整
-    window.protocol("WM_DELETE_WINDOW", quit_app)  # 自定义关闭事件
+    window.protocol("WM_DELETE_WINDOW", on_window_cover)  # 自定义关闭事件
 
 # ========== 自动调整文字换行 ========== #
 def update_wraplength(event):
@@ -193,11 +193,6 @@ def win_size():
 
 # ========== 窗口底部标签 ========== #
 def Button_window():
-    # 底部按钮
-    tk.Button(window, text="关闭", command=quit_app, font=("Microsoft YaHei", 12)).pack(side=tk.BOTTOM, pady=10)
-    tk.Button(window, text="隐藏", command=on_window_cover, font=("Microsoft YaHei", 12)).pack(side=tk.BOTTOM, pady=10)
-
-    # 功能按钮框
     button_frame = tk.Frame(window)
     button_frame.pack(side=tk.BOTTOM, pady=10)
     tk.Button(button_frame, text="随机话语", command=update_quote_only, font=("Microsoft YaHei", 12)).pack(side=tk.LEFT,padx=10)

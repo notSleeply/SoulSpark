@@ -4,8 +4,7 @@
 
 ### 测试
 
-1. 将dist中的bible.txt复制到主目录下
-2. 运行DayDayUp.pyw即可
+1. 运行DayDayUp.pyw即可
 
 ### 目标
 

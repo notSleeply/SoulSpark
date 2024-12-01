@@ -1,4 +1,4 @@
-('D:\\Code\\PyTool\\DayDayUp\\build\\DayDayUp\\PYZ-00.pyz',
+('D:\\Code\\DayDayUp\\build\\DayDayUp\\PYZ-00.pyz',
  [('PIL',
    'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
