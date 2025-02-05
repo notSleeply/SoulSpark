@@ -1,7 +1,3 @@
-# 工具打包
-# pip install pyinstaller
-# pyinstaller --onefile --windowed DayDayUp.pyw  # 生成可执行文件
-
 # ========== 导入必要模块 ========== #
 import tkinter as tk  # 用于创建图形用户界面
 import random  # 提供随机选择功能
@@ -12,9 +8,10 @@ from PIL import Image  # 图像处理
 from tkinter import messagebox  # 创建消息弹窗
 from win11toast import toast  # 实现桌面通知功能
 
+
 # ========== 配置参数 ========== #
 # 随机时间间隔 (单位: 毫秒)
-TIME_RANDOM = 600000  # 每10分钟更新一次语录
+TIME_RANDOM = 300000  # 更新时间
 WORD_LENGTH = 100  # 限制语录的最大字符长度
 QUOTE_FILE = "Bible.txt"  # 默认语录存储文件
 ICON_FILE = "icon.ico"  # 托盘图标文件路径
@@ -23,7 +20,7 @@ WINDOW_HEIGHT = 500  # 窗口高度
 MIN_WINDOW_WIDTH = 800  # 最小宽度
 MIN_WINDOW_HEIGHT = 500  # 最小高度
 quotes = [] # 暂时储存语录
-
+max_lines = 4  # 通知最多显示的行数
 
 # ========== 初始化语录 ========== #
 def load_quotes():
@@ -58,10 +55,6 @@ def show_quote():
     formatted_quote = content[:-1].replace(".", "\n") + content[-1] if content.endswith(".") else content.replace(".", "\n")
     label.config(text=formatted_quote)  # 在窗口中完整显示语句
 
-    # 定义通知栏限制参数
-    max_line_length = 25  # 单行最大字符数
-    max_lines = 4  # 通知最多显示的行数
-    max_notification_length = max_line_length * max_lines  # 通知最大字符数
 
     # 计算 timer 的值
     for line in formatted_quote.split("\n"):

@@ -1,17 +1,17 @@
 # DayDayUp
 
-- 个人提醒事项
-
 ### 测试
 
 - 运行DayDayUp.pyw即可
 
-### 目标
+### 打包
 
-- 更舒服的UI
-- 可在用户端就调整话句
+```
+# 工具打包
+# pip install pyinstaller
+# pyinstaller --onefile --windowed DayDayUp.pyw  # 生成可执行文件
+```
 
-### 开发时遇到的问题
+### 添加条目
 
-- 当我想实现点击图标就显示窗口时：查看Menu原文件中所提供的参数；
-
+- .txt文件中添加条目
