@@ -1,4 +1,3 @@
-# ========== 导入必要模块 ========== #
 import tkinter as tk  # 用于创建图形用户界面
 import random  # 提供随机选择功能
 import os  # 用于文件操作
@@ -7,7 +6,7 @@ from pystray import Icon, MenuItem, Menu  # 创建系统托盘图标
 from PIL import Image  # 图像处理
 from tkinter import messagebox  # 创建消息弹窗
 from win11toast import toast  # 实现桌面通知功能
-
+from Config.config import *
 
 # ========== 配置参数 ========== #
 # 随机时间间隔 (单位: 毫秒)
