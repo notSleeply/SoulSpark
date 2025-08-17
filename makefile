@@ -1,12 +1,12 @@
-# PyScript-DayDayUp Makefile
+# SoulSpark Makefile
 
 # 可自定义的配置项
 UV = uv
 PYTHON = uv run python
 PYTHONW = uv run pythonw
 PYINSTALLER = uv run pyinstaller
-APP_NAME = DayDayUp
-APP_FILE = src/main.pyw
+APP_NAME = SoulSpark
+APP_FILE = main.pyw
 
 # 默认目标
 all: build
