@@ -1,1 +1,0 @@
-from .quotes_manager import *
