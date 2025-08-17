@@ -5,9 +5,8 @@
 3. 组件管理：定义和管理UI组件
 """
 import customtkinter as ctk
-import random
 from src.config import STYLE_CONTENT_FONT,QUOTE_FILE
-from src.Words import read_words_from_file
+from src.Words import random_choice
 
 
 
@@ -19,16 +18,15 @@ def create_display_frame(parent):
     - 返回: 无
     """
     display_frame = ctk.CTkFrame(parent)
-    display_frame.pack(expand=True, fill="both", padx=30, pady=10)
+    display_frame.pack(expand=True, fill="both", padx=10, pady=10)
 
-    words_list = read_words_from_file(QUOTE_FILE)
-    init_text = random.choice(words_list)
+    init_text = random_choice(QUOTE_FILE)
 
     display_label = ctk.CTkLabel(
         display_frame,
         text=init_text,
         font=STYLE_CONTENT_FONT,
-        wraplength=420,
+        wraplength=660,
         justify="left"  
     )
-    display_label.place(relx=0, rely=0, anchor="nw")
+    display_label.place(relx=0.02, rely=0.02, anchor="nw")

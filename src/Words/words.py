@@ -5,7 +5,40 @@
 3. 语录搜索：根据关键词搜索语录
 """
 import os
-from src.config import QUOTE_FILE
+import random
+import re
+
+
+def random_choice(filepath):
+    """
+    - 名称: 随机选择语录
+    - 功能: 从语录列表中随机选择一条语录
+    - 参数: filepath - 文件路径
+    - 返回: 随机选择的语录
+    """
+    words_list = read_words_from_file(filepath)
+    if not words_list:
+        return "没有可用的语录"
+    return format_text(random.choice(words_list))
+
+
+def format_text(text: str) -> str:
+    """
+    - 名称: 文本格式化
+    - 功能: 遇到阶段符合自动换行
+    - 参数: text - 原始语录
+    - 返回: 格式化后的语录
+    """
+    if not text:
+        return text
+
+    pattern_colon = r'([：:，])'
+    text = re.sub(pattern_colon, '\n', text)
+
+    pattern = r'([。！？；……\.\!\?;])'
+    result = re.sub(pattern, r'\1\n', text)
+
+    return result
 
 
 def read_words_from_file(filepath):

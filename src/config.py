@@ -19,11 +19,11 @@ VERSION = "1.0.0"
 
 
 # ========== 样式参数 ========== #
-GEOMETRY = "480x720"
+GEOMETRY = "720x480"
 """窗口大小"""
 STYLE_BUTTON_FONT = ("微软雅黑", 14)
 """默认按钮字体样式"""
-STYLE_CONTENT_FONT = ("微软雅黑", 18)
+STYLE_CONTENT_FONT = ("微软雅黑", 22)
 """默认内容字体样式"""
 STYLE_MODE = "system"
 """默认主题模式，可选: "light", "dark", "system" """
