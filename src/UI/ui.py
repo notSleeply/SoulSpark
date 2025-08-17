@@ -69,7 +69,7 @@ def create_display_frame(parent):
     - 参数: parent - tk实例
     - 返回: 无
     """
-    display_frame = ttk.Frame(parent, borderwidth=2, relief="groove")
+    display_frame = ttk.Frame(parent,)
     display_frame.pack(expand=True, fill=tk.BOTH, padx=30, pady=10)
 
     display_label = ttk.Label(display_frame, text="展示",
