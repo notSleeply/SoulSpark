@@ -27,6 +27,8 @@ def create_display_frame(parent):
     display_label = ctk.CTkLabel(
         display_frame,
         text=init_text,
-        font=STYLE_CONTENT_FONT
+        font=STYLE_CONTENT_FONT,
+        wraplength=420,
+        justify="left"  
     )
-    display_label.place(relx=0.5, rely=0.5, anchor="center")
+    display_label.place(relx=0, rely=0, anchor="nw")
