@@ -19,6 +19,7 @@ def read_words_from_file(filepath):
 
     actual_filepath = resolve_file_path(filepath)
     if actual_filepath is None:
+        words.append("未找到语录文件，请检查配置。")
         return words
 
     try:

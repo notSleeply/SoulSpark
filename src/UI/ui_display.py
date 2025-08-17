@@ -22,10 +22,7 @@ def create_display_frame(parent):
     display_frame.pack(expand=True, fill="both", padx=30, pady=10)
 
     words_list = read_words_from_file(QUOTE_FILE)
-    if words_list:
-        init_text = random.choice(words_list)
-    else:
-        init_text = "没有语录可显示"
+    init_text = random.choice(words_list)
 
     display_label = ctk.CTkLabel(
         display_frame,
