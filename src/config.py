@@ -21,10 +21,14 @@ VERSION = "1.0.0"
 # ========== 样式参数 ========== #
 GEOMETRY = "480x720"
 """窗口大小"""
-STYLE_BUTTON_FONT = ("微软雅黑", 12)
+STYLE_BUTTON_FONT = ("微软雅黑", 14)
 """默认按钮字体样式"""
 STYLE_CONTENT_FONT = ("微软雅黑", 18)
 """默认内容字体样式"""
+STYLE_MODE = "system"
+"""默认主题模式，可选: "light", "dark", "system" """
+STYLE_COLOR = "blue"
+"""默认主题颜色，可选: "green", "dark-blue", 自定义json"""
 
 # ========== 通知参数 ========== #
 TIME_RANDOM = 300000

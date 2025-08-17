@@ -9,6 +9,7 @@ dependencies = [
     "pillow>=10.4.0",
     "pystray>=0.19.5",
     "win11toast>=0.35",
+    "customtkinter>=5.2.0",
 ]
 
 [dependency-groups]
