@@ -29,11 +29,11 @@ install-pyinstaller:
 
 # 生成可执行文件
 build:
-	$(PYINSTALLER) --noconsole --onefile --icon=icon.ico --name=$(APP_NAME) --hidden-import=win11toast --hidden-import=olefile $(APP_FILE)
+	$(PYINSTALLER) --noconsole --onefile --icon=icon.ico --name=$(APP_NAME) $(APP_FILE)
 
 # 生成绿色版可执行文件（包含程序和资源）
 build-portable:
-	$(PYINSTALLER) --noconsole --onedir --icon=icon.ico --name=$(APP_NAME) --hidden-import=win11toast --hidden-import=olefile $(APP_FILE)
+	$(PYINSTALLER) --noconsole --onedir --icon=icon.ico --name=$(APP_NAME) $(APP_FILE)
 	copy Bible.txt dist\$(APP_NAME)\
 	copy icon.ico dist\$(APP_NAME)\
 
@@ -41,11 +41,11 @@ build-portable:
 clean:
 	-rmdir /s /q build 2>nul
 	-rmdir /s /q dist 2>nul
-	-del $(APP_NAME).spec 2>nul
+	-cmd /c del $(APP_NAME).spec 2>nul
 
 # 强制重新构建
 rebuild: clean
-	$(PYINSTALLER) --noconsole --onefile --icon=icon.ico --name=$(APP_NAME) --hidden-import=win11toast --hidden-import=olefile $(APP_FILE)
+	$(PYINSTALLER) --noconsole --onefile --icon=icon.ico --name=$(APP_NAME)  $(APP_FILE)
 
 # 帮助信息
 help:
