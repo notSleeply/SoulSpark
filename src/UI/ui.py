@@ -6,13 +6,10 @@
 """
 
 import customtkinter as ctk
-from src.config import NAME, GEOMETRY, STYLE_BUTTON_FONT, STYLE_CONTENT_FONT, STYLE_COLOR, STYLE_MODE, QUOTE_FILE
-from src.Words import read_words_from_file
+from src.config import NAME, GEOMETRY, STYLE_COLOR, STYLE_MODE
 from src.UI.ui_top import create_top_frame
 from src.UI.ui_bottom import create_bottom_frame
 from src.UI.ui_display import create_display_frame
-
-words_list = read_words_from_file(QUOTE_FILE)
 
 def main_window():
     """

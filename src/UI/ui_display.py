@@ -6,7 +6,9 @@
 """
 import customtkinter as ctk
 import random
-from src.config import STYLE_CONTENT_FONT
+from src.config import STYLE_CONTENT_FONT,QUOTE_FILE
+from src.Words import read_words_from_file
+
 
 
 def create_display_frame(parent):
@@ -19,24 +21,15 @@ def create_display_frame(parent):
     display_frame = ctk.CTkFrame(parent)
     display_frame.pack(expand=True, fill="both", padx=30, pady=10)
 
+    words_list = read_words_from_file(QUOTE_FILE)
+    if words_list:
+        init_text = random.choice(words_list)
+    else:
+        init_text = "没有语录可显示"
+
     display_label = ctk.CTkLabel(
         display_frame,
-        text="展示",
+        text=init_text,
         font=STYLE_CONTENT_FONT
     )
     display_label.place(relx=0.5, rely=0.5, anchor="center")
-
-
-def update_display(label):
-    """
-    - 功能: 更新中间展示区显示内容
-    - 参数:
-        label - CTkLabel 实例
-    """
-    if not words_list:
-        label.config(text="没有语录可显示")
-        return
-
-    word = random.choice(words_list)
-    label.config(text=word)
-

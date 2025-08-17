@@ -43,7 +43,7 @@ def resolve_file_path(filepath):
         return filepath
 
     # 如果原始路径不存在，尝试在 /dist 目录下查找
-    dist_filepath = os.path.join("/dist", filepath)
+    dist_filepath = os.path.join("./dist", filepath)
     if os.path.exists(dist_filepath):
         return dist_filepath
 
