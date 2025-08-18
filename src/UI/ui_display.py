@@ -30,3 +30,4 @@ def create_display_frame(parent):
         justify="left"  
     )
     display_label.place(relx=0.02, rely=0.02, anchor="nw")
+    return display_label

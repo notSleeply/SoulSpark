@@ -32,7 +32,7 @@ def format_text(text: str) -> str:
     if not text:
         return text
 
-    pattern_colon = r'([：:，])'
+    pattern_colon = r'([：:，,])'
     text = re.sub(pattern_colon, '\n', text)
 
     pattern = r'([。！？；……\.\!\?;])'

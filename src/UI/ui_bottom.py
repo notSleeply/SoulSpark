@@ -5,9 +5,16 @@
 3. 组件管理：定义和管理UI组件
 """
 import customtkinter as ctk
-from src.config import STYLE_BUTTON_FONT
+from src.config import STYLE_BUTTON_FONT, QUOTE_FILE
+from src.Words import random_choice
 
-def create_bottom_frame(parent):
+
+def on_random_click(display_label):
+    new_text = random_choice(QUOTE_FILE)
+    display_label.configure(text=new_text)
+
+
+def create_bottom_frame(parent, display_label):
     """
     - 名称: 底部按钮区
     - 功能: 创建并管理底部按钮区
@@ -23,6 +30,6 @@ def create_bottom_frame(parent):
         font=STYLE_BUTTON_FONT,
         width=200,
         height=50,
-        command=lambda: print("随机一下 clicked")
+        command=lambda: on_random_click(display_label)
     )
     btn_random.pack(pady=5)
