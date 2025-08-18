@@ -24,8 +24,8 @@ def main_window():
     root = ctk.CTk()
     config_frame(root)
     create_top_frame(root)
-    display_label= create_display_frame(root)
-    create_bottom_frame(root, display_label)
+    display_textbox = create_display_frame(root)
+    create_bottom_frame(root, display_textbox)
 
     root.mainloop()
 
