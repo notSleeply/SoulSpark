@@ -25,7 +25,7 @@ def main_window():
     root = ctk.CTk()
     config_frame(root)
 
-    ui_state = UIState()
+    ui_state = UIState(root)
 
     top_frame(root, on_add_click=ui_state.on_add_click,
               on_show_click=ui_state.on_show_click)

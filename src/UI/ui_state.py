@@ -17,17 +17,20 @@ class UIState:
     - 参数: 无
     - 返回: 无
     """
-    def __init__(self):
+
+    def __init__(self, root):
         """
         - 名称: 初始化应用状态
         - 功能: 设置初始状态和UI组件引用
         - 参数: 无
         - 返回: 无
         """
+        self.root = root
         self.mode = "show"
         self.display_textbox = None
         self.btn_random = None
         self.saved_text = ""
+        self.timer_id = None
         
     def show_click_text(self, text):
         """
@@ -60,6 +63,7 @@ class UIState:
         self.btn_random = btn_random
         self.btn_random.configure(command=self.on_bottom_click)
         self.on_random_click()
+        self.start_random_timer()
 
     def on_add_click(self):
         """
@@ -68,6 +72,7 @@ class UIState:
         - 参数: 无
         - 返回: 无
         """
+        self.stop_random_timer()
         self.mode = "add"
         self.saved_text = self.display_textbox.get("0.0", "end-1c")
         self.display_textbox.configure(state="normal")
@@ -85,6 +90,7 @@ class UIState:
         self.show_click_text(self.saved_text)
         self.display_textbox.configure(state="disabled")
         self.btn_random.configure(text="随机一下")
+        self.start_random_timer()
 
     def on_bottom_click(self):
         """
@@ -103,3 +109,31 @@ class UIState:
             self.display_textbox.insert("0.0", new_text)
         else:
             self.on_random_click()
+
+    def start_random_timer(self):
+        """
+        - 名称: 启动随机语录定时器
+        - 功能: 定时更新显示的随机语录
+        - 参数: 无
+        - 返回: 无
+        """
+        if self.timer_id:
+            self.root.after_cancel(self.timer_id)
+
+        def repeat_task():
+            if self.mode == "show":
+                self.on_random_click()
+            self.timer_id = self.root.after(60000, repeat_task)
+
+        self.timer_id = self.root.after(60000, repeat_task)
+
+    def stop_random_timer(self):
+        """
+        - 名称: 停止随机语录定时器
+        - 功能: 取消正在进行的定时任务
+        - 参数: 无
+        - 返回: 无
+        """
+        if self.timer_id:
+            self.root.after_cancel(self.timer_id)
+            self.timer_id = None
