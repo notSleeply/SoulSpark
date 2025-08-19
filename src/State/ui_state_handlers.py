@@ -3,12 +3,13 @@ from src.config import QUOTE_FILE
 from .ui_state_words import start_random_timer, stop_random_timer, on_random_click, show_click_text
 
 
-def set_components(instance, display_textbox, btn_random):
+def set_components(instance, display_textbox, btn_random, init_text):
     """
     功能: 存储UI组件的引用并设置按钮命令
     """
     instance.display_textbox = display_textbox
     instance.btn_random = btn_random
+    instance.saved_text = init_text
     instance.btn_random.configure(command=lambda: on_bottom_click(instance))
     on_random_click(instance)
     start_random_timer(instance)

@@ -1,3 +1,11 @@
+"""
+`ui_state_words.py`  - **UI状态管理** 
+1. 处理展示按钮的点击事件
+2. 处理随机按钮的点击事件
+3. 启动和停止定时器
+"""
+
+from threading import Timer
 from src.Words import random_choice
 from .show_click import show_textbox
 from src.config import QUOTE_FILE
@@ -15,24 +23,29 @@ def on_random_click(instance):
     """
     功能: 处理随机按钮的点击事件，显示随机语录
     """
-    new_text = random_choice(QUOTE_FILE)
-    show_textbox(instance.display_textbox, new_text)
+    instance.saved_text = random_choice(QUOTE_FILE)
+    show_textbox(instance.display_textbox, instance.saved_text)
+    start_random_timer(instance)
 
 
 def start_random_timer(instance):
     """
     功能: 启动随机定时器，每隔一分钟自动更新语录
     """
-    if instance.mode == "show" and instance.timer_id is None:
-        on_random_click(instance)
-    instance.timer_id = instance.root.after(
-        60000, lambda: start_random_timer(instance))
+    # 停止旧的定时器，以防重复启动
+    stop_random_timer(instance)
+
+    # 创建并启动新的定时器
+    # 60秒后调用 on_random_click 并传递 instance 参数
+    instance.timer = Timer(3, on_random_click, args=[instance])
+    instance.timer.daemon = True
+    instance.timer.start()
 
 
 def stop_random_timer(instance):
     """
     功能: 停止随机定时器
     """
-    if instance.timer_id:
-        instance.root.after_cancel(instance.timer_id)
-        instance.timer_id = None
+    if instance.timer and instance.timer.is_alive():
+        instance.timer.cancel()
+        instance.timer = None

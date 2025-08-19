@@ -26,7 +26,7 @@ class UIState:
         self.display_textbox = None
         self.btn_random = None
         self.saved_text = ""
-        self.timer_id = None
+        self.timer = None
 
     def show_click_text(self, text):
         show_click_text(self, text)
@@ -34,8 +34,8 @@ class UIState:
     def on_random_click(self):
         on_random_click(self)
 
-    def set_components(self, display_textbox, btn_random):
-        set_components(self, display_textbox, btn_random)
+    def set_components(self, display_textbox, btn_random, init_text):
+        set_components(self, display_textbox, btn_random, init_text)
 
     def on_add_click(self):
         on_add_click(self)

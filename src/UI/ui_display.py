@@ -28,7 +28,7 @@ def display_show(parent):
                           relwidth=0.96, relheight=0.96, anchor="nw")
     display_textbox.insert("0.0", init_text)
     display_textbox.configure(state="disabled")
-    return display_textbox
+    return display_textbox, init_text
 
 def display_frame(parent):
     """
@@ -40,6 +40,6 @@ def display_frame(parent):
     display_frame = ctk.CTkFrame(parent)
     display_frame.pack(expand=True, fill="both", padx=10, pady=10)
 
-    display_textbox = display_show(display_frame)
+    display_textbox, init_text = display_show(display_frame)
 
-    return display_textbox
+    return display_textbox, init_text

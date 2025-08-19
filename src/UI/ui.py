@@ -27,12 +27,11 @@ def main_window():
 
     ui_state = UIState(root)
 
-    top_frame(root, on_add_click=ui_state.on_add_click,
-              on_show_click=ui_state.on_show_click)
-    display_textbox = display_frame(root)
+    top_frame(root, on_add_click=ui_state.on_add_click,on_show_click=ui_state.on_show_click)
+    display_textbox, init_text = display_frame(root)
     btn_random = bottom_frame(root)
 
-    ui_state.set_components(display_textbox, btn_random)
+    ui_state.set_components(display_textbox, btn_random, init_text)
 
     root.mainloop()
 
