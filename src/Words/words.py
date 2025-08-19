@@ -19,8 +19,13 @@ def text_to_file(filepath, text):
     actual_filepath = resolve_file_path(filepath)
     if actual_filepath is None:
         return
+    cleaned_text = text.strip()
+
     with open(actual_filepath, "a", encoding="utf-8") as f:
-        f.write(text.strip() + "\n")
+        f.seek(0, 2)  
+        if f.tell() > 0:  
+             f.write("\n")
+        f.write(cleaned_text)
 
 
 

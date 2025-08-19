@@ -23,6 +23,7 @@ def display_show(parent):
         wrap="word",  
         activate_scrollbars=True 
     )
+    display_textbox.bind("<Return>", lambda e: "break")
     display_textbox.place(relx=0.02, rely=0.02,
                           relwidth=0.96, relheight=0.96, anchor="nw")
     display_textbox.insert("0.0", init_text)

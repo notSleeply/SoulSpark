@@ -7,9 +7,10 @@
 from src.Words import text_to_file 
 from src.config import QUOTE_FILE
 from src.Words import random_choice
+from src.UI.show_click import show_textbox
 
 
-class AppState:
+class UIState:
     """
     - 名称: 应用状态管理
     - 功能: 管理应用的当前状态
@@ -27,18 +28,6 @@ class AppState:
         self.display_textbox = None
         self.btn_random = None
         self.saved_text = ""
-
-    def show_textbox(self, text):
-        """
-        - 名称: 展示文本框
-        - 功能: 封装文本框的更新逻辑，包括清空、插入和禁用
-        - 参数: text - 要显示在文本框中的文本
-        - 返回: 无
-        """
-        self.display_textbox.configure(state="normal")
-        self.display_textbox.delete("0.0", "end")
-        self.display_textbox.insert("0.0", text)
-        self.display_textbox.configure(state="disabled")
         
     def show_click_text(self, text):
         """
@@ -48,7 +37,7 @@ class AppState:
         - 返回: 无
         """
         self.saved_text = text
-        self.show_textbox(text)
+        show_textbox(self.display_textbox, text)
 
     def on_random_click(self):
         """
@@ -58,7 +47,7 @@ class AppState:
         - 返回: 无
         """
         new_text = random_choice(QUOTE_FILE)
-        self.show_textbox(new_text)
+        show_textbox(self.display_textbox, new_text)
 
     def set_components(self, display_textbox, btn_random):
         """
@@ -108,7 +97,7 @@ class AppState:
             new_text = self.display_textbox.get("0.0", "end-1c").strip()
             if new_text:
                 text_to_file(QUOTE_FILE, new_text)
-                print(f"Adding new text: {new_text}")
+                print(f"添加新语录: {new_text}")
 
             self.on_show_click()
             self.display_textbox.insert("0.0", new_text)
