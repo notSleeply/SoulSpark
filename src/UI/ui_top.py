@@ -9,7 +9,7 @@ import customtkinter as ctk
 from src.config import STYLE_BUTTON_FONT
 
 
-def top_show_button(parent):
+def top_show_button(parent, command=None):
     """
     - 名称: 展示按钮
     - 功能: 创建并管理“展示”按钮
@@ -22,13 +22,13 @@ def top_show_button(parent):
         font=STYLE_BUTTON_FONT,
         width=120,
         height=40,
-        command=lambda: print("展示 clicked")
+        command=command if command else lambda: print("展示 clicked")
     )
     btn_show.pack(side="left", expand=True, fill="x", padx=(30, 5), pady=5)
     return btn_show
 
 
-def top_add_button(parent):
+def top_add_button(parent, command=None):
     """
     - 名称: 添加按钮
     - 功能: 创建并管理“添加”按钮
@@ -41,13 +41,13 @@ def top_add_button(parent):
         font=STYLE_BUTTON_FONT,
         width=120,
         height=40,
-        command=lambda: print("添加 clicked")
+        command=command if command else lambda: print("添加 clicked")
     )
     btn_add.pack(side="right", expand=True, fill="x", padx=(5, 30), pady=5)
     return btn_add
 
 
-def top_frame(parent):
+def top_frame(parent, on_add_click=None, on_show_click=None):
     """
     - 名称: 顶部按钮区
     - 功能: 创建并管理顶部按钮区
@@ -57,5 +57,5 @@ def top_frame(parent):
     top_frame = ctk.CTkFrame(parent, fg_color="transparent")
     top_frame.pack(side="top", fill="x", pady=10)
 
-    top_show_button(top_frame)
-    top_add_button(top_frame)
+    top_show_button(top_frame, command=on_show_click)
+    top_add_button(top_frame, command=on_add_click)

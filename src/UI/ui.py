@@ -10,6 +10,7 @@ from src.config import NAME, GEOMETRY, STYLE_COLOR, STYLE_MODE
 from src.UI.ui_top import top_frame
 from src.UI.ui_bottom import bottom_frame
 from src.UI.ui_display import display_frame
+from src.UI.app_state import AppState
 
 def main_window():
     """
@@ -23,9 +24,15 @@ def main_window():
 
     root = ctk.CTk()
     config_frame(root)
-    top_frame(root)
+
+    app_state = AppState()
+
+    top_frame(root, on_add_click=app_state.on_add_click,
+              on_show_click=app_state.on_show_click)
     display_textbox = display_frame(root)
-    bottom_frame(root, display_textbox)
+    btn_random = bottom_frame(root)
+    
+    app_state.set_components(display_textbox, btn_random)
 
     root.mainloop()
 
