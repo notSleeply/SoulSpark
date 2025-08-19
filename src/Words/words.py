@@ -9,6 +9,21 @@ import random
 import re
 
 
+def text_to_file(filepath, text):
+    """
+    - 名称: 文本写入文件
+    - 功能: 将文本写入指定文件
+    - 参数: filepath - 文件路径, text - 要写入的文本
+    - 返回: 无
+    """
+    actual_filepath = resolve_file_path(filepath)
+    if actual_filepath is None:
+        return
+    with open(actual_filepath, "a", encoding="utf-8") as f:
+        f.write(text.strip() + "\n")
+
+
+
 def random_choice(filepath):
     """
     - 名称: 随机选择语录
