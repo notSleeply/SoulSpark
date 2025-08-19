@@ -10,7 +10,7 @@ from src.config import NAME, GEOMETRY, STYLE_COLOR, STYLE_MODE
 from src.UI.ui_top import top_frame
 from src.UI.ui_bottom import bottom_frame
 from src.UI.ui_display import display_frame
-from src.UI.ui_state import UIState
+from src.State.ui_state import UIState
 
 def main_window():
     """
