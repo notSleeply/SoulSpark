@@ -7,9 +7,9 @@
 
 import customtkinter as ctk
 from src.config import NAME, GEOMETRY, STYLE_COLOR, STYLE_MODE
-from src.UI.ui_top import create_top_frame
-from src.UI.ui_bottom import create_bottom_frame
-from src.UI.ui_display import create_display_frame
+from src.UI.ui_top import top_frame
+from src.UI.ui_bottom import bottom_frame
+from src.UI.ui_display import display_frame
 
 def main_window():
     """
@@ -23,9 +23,9 @@ def main_window():
 
     root = ctk.CTk()
     config_frame(root)
-    create_top_frame(root)
-    display_textbox = create_display_frame(root)
-    create_bottom_frame(root, display_textbox)
+    top_frame(root)
+    display_textbox = display_frame(root)
+    bottom_frame(root, display_textbox)
 
     root.mainloop()
 

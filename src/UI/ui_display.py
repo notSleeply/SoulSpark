@@ -9,8 +9,27 @@ from src.config import STYLE_CONTENT_FONT,QUOTE_FILE
 from src.Words import random_choice
 
 
+def display_show(parent):
+    """
+    - 名称: 展示内容
+    - 功能: 显示当前文本框中的内容
+    - 参数: parent - 文本框的父容器
+    - 返回: display_textbox - 配置好的文本框实例
+    """
+    init_text = random_choice(QUOTE_FILE)
+    display_textbox = ctk.CTkTextbox(
+        parent,
+        font=STYLE_CONTENT_FONT,
+        wrap="word",  
+        activate_scrollbars=True 
+    )
+    display_textbox.place(relx=0.02, rely=0.02,
+                          relwidth=0.96, relheight=0.96, anchor="nw")
+    display_textbox.insert("0.0", init_text)
+    display_textbox.configure(state="disabled")
+    return display_textbox
 
-def create_display_frame(parent):
+def display_frame(parent):
     """
     - 名称: 中间展示区
     - 功能: 创建并管理中间展示区
@@ -20,21 +39,6 @@ def create_display_frame(parent):
     display_frame = ctk.CTkFrame(parent)
     display_frame.pack(expand=True, fill="both", padx=10, pady=10)
 
-    init_text = random_choice(QUOTE_FILE)
-
-    display_textbox = ctk.CTkTextbox(
-        display_frame,
-        font=STYLE_CONTENT_FONT,
-        wrap="word",  # 自动换行
-        activate_scrollbars=True  # 激活滚动条
-    )
-    display_textbox.place(relx=0.02, rely=0.02,
-                          relwidth=0.96, relheight=0.96, anchor="nw")
-
-    # 插入初始文本
-    display_textbox.insert("0.0", init_text)
-
-    # 设置为只读模式（不能编辑）
-    display_textbox.configure(state="disabled")
+    display_textbox = display_show(display_frame)
 
     return display_textbox
