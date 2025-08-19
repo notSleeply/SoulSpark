@@ -8,7 +8,7 @@
 from threading import Timer
 from src.Words import random_choice
 from .show_click import show_textbox
-from src.config import QUOTE_FILE
+from src.config import QUOTE_FILE, TIME_SHOW
 
 
 def show_click_text(instance, text):
@@ -32,12 +32,9 @@ def start_random_timer(instance):
     """
     功能: 启动随机定时器，每隔一分钟自动更新语录
     """
-    # 停止旧的定时器，以防重复启动
     stop_random_timer(instance)
 
-    # 创建并启动新的定时器
-    # 60秒后调用 on_random_click 并传递 instance 参数
-    instance.timer = Timer(3, on_random_click, args=[instance])
+    instance.timer = Timer(TIME_SHOW, on_random_click, args=[instance])
     instance.timer.daemon = True
     instance.timer.start()
 
