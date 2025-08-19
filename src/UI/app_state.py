@@ -26,6 +26,29 @@ class AppState:
         self.mode = "show"
         self.display_textbox = None
         self.btn_random = None
+        self.saved_text = ""
+
+    def show_textbox(self, text):
+        """
+        - 名称: 展示文本框
+        - 功能: 封装文本框的更新逻辑，包括清空、插入和禁用
+        - 参数: text - 要显示在文本框中的文本
+        - 返回: 无
+        """
+        self.display_textbox.configure(state="normal")
+        self.display_textbox.delete("0.0", "end")
+        self.display_textbox.insert("0.0", text)
+        self.display_textbox.configure(state="disabled")
+        
+    def show_click_text(self, text):
+        """
+        - 名称: 展示点击事件
+        - 功能: 处理展示按钮的点击事件，显示当前文本框中的内容
+        - 参数: 无
+        - 返回: 无
+        """
+        self.saved_text = text
+        self.show_textbox(text)
 
     def on_random_click(self):
         """
@@ -35,10 +58,7 @@ class AppState:
         - 返回: 无
         """
         new_text = random_choice(QUOTE_FILE)
-        self.display_textbox.configure(state="normal")
-        self.display_textbox.delete("0.0", "end")
-        self.display_textbox.insert("0.0", new_text)
-        self.display_textbox.configure(state="disabled")
+        self.show_textbox(new_text)
 
     def set_components(self, display_textbox, btn_random):
         """
@@ -60,6 +80,7 @@ class AppState:
         - 返回: 无
         """
         self.mode = "add"
+        self.saved_text = self.display_textbox.get("0.0", "end-1c")
         self.display_textbox.configure(state="normal")
         self.display_textbox.delete("0.0", "end")
         self.btn_random.configure(text="确定")
@@ -72,7 +93,7 @@ class AppState:
         - 返回: 无
         """
         self.mode = "show"
-        self.on_random_click()
+        self.show_click_text(self.saved_text)
         self.display_textbox.configure(state="disabled")
         self.btn_random.configure(text="随机一下")
 
