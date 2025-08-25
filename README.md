@@ -25,7 +25,7 @@
 1. **安装依赖库**：打开命令行窗口，执行以下命令安装所需的依赖库：
 
 ``` powershell
-pip install -r requirements.txt
+uv pip sync
 ```
 
 1. **获取程序文件**：将项目中的 Python 代码文件（.py）、默认语录存储文件（Bible.txt）和托盘图标文件（icon.ico）放在同一目录下。
