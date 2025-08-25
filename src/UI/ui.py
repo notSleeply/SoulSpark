@@ -11,6 +11,7 @@ from src.UI.ui_top import top_frame
 from src.UI.ui_bottom import bottom_frame
 from src.UI.ui_display import display_frame
 from src.State.ui_state import UIState
+from src.Tray import set_main_window, create_tray_icon
 
 def main_window():
     """
@@ -32,6 +33,13 @@ def main_window():
     btn_random = bottom_frame(root)
 
     ui_state.set_components(display_textbox, btn_random, init_text)
+
+    set_main_window(root)
+    create_tray_icon()
+
+    def on_close():
+        root.withdraw()
+    root.protocol("WM_DELETE_WINDOW", on_close)
 
     root.mainloop()
 
