@@ -31,7 +31,5 @@ STYLE_COLOR = "blue"
 """默认主题颜色，可选: "green", "dark-blue", 自定义json"""
 
 # ========== 通知参数 ========== #
-TIME_RANDOM = 300000
-"""更新时间"""
-TIME_SHOW = 60
+TIME_SHOW = 300
 """随机时间"""
