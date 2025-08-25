@@ -47,5 +47,6 @@ def on_bottom_click(instance):
         if new_text:
             text_to_file(QUOTE_FILE, new_text)
             print(f"添加新语录: {new_text}")
+            on_show_click(instance)
     else:
         on_random_click(instance)
