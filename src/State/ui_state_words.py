@@ -9,6 +9,7 @@ from threading import Timer
 from src.Words import random_choice
 from .show_click import show_textbox
 from src.config import QUOTE_FILE, TIME_SHOW
+from src.Tray import show_notification
 
 
 def show_click_text(instance, text):
@@ -25,6 +26,7 @@ def on_random_click(instance):
     """
     instance.saved_text = random_choice(QUOTE_FILE)
     show_textbox(instance.display_textbox, instance.saved_text)
+    show_notification(instance.saved_text)
     start_random_timer(instance)
 
 
