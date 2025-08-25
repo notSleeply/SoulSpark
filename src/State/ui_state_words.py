@@ -5,6 +5,7 @@
 3. 启动和停止定时器
 """
 
+import threading
 from threading import Timer
 from src.Words import random_choice
 from .show_click import show_textbox
@@ -26,7 +27,7 @@ def on_random_click(instance):
     """
     instance.saved_text = random_choice(QUOTE_FILE)
     show_textbox(instance.display_textbox, instance.saved_text)
-    show_notification(instance.saved_text)
+    threading.Thread(target=show_notification, args=(instance.saved_text,), daemon=True).start()
     start_random_timer(instance)
 
 
